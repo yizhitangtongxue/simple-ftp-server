@@ -60,7 +60,7 @@ go build -o ftp-server main.go
 mkdir -p /tmp/ftp/admin
 
 # 启动服务器
-./ftp-server
+./simple-ftp-server
 ```
 
 ## 跨平台编译方法
@@ -70,24 +70,24 @@ mkdir -p /tmp/ftp/admin
 ### 编译 Linux 版本 (amd64)
 适用于常见的 Linux 服务器 (CentOS, Ubuntu 等)。
 ```bash
-CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ftp-server-linux main.go
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o simple-ftp-server-linux main.go
 ```
 
 ### 编译 Windows 版本 (amd64)
 生成 `.exe` 文件。
 ```bash
-CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o ftp-server-windows.exe main.go
+CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o simple-ftp-server-windows.exe main.go
 ```
 
 ### 编译 macOS 版本 (amd64 / Intel)
 ```bash
-CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o ftp-server-mac-intel main.go
+CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o simple-ftp-server-mac-intel main.go
 ```
 
 ### 编译 macOS 版本 (arm64 / Apple Silicon)
 适用于 M1/M2/M3 芯片。
 ```bash
-CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -o ftp-server-mac-m1 main.go
+CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -o simple-ftp-server-mac-m1 main.go
 ```
 
 ## Systemd 自动开机启动 (Linux)
@@ -95,14 +95,14 @@ CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -o ftp-server-mac-m1 main.go
 本项目提供了 `simple-ftp-server.service` 模板文件，用于配置 Systemd 服务。
 
 ### 1. 部署文件
-假设你将程序部署在 `/opt/ftp-server` 目录：
+假设你将程序部署在 `/opt/simple-ftp-server` 目录：
 ```bash
 # 创建目录
-mkdir -p /opt/ftp-server/
+mkdir -p /opt/simple-ftp-server/
 
 # 复制文件
-cp ftp-server-linux /opt/ftp-server/ftp-server
-cp config.json /opt/ftp-server/
+cp ftp-server-linux /opt/simple-ftp-server/simple-ftp-server
+cp config.json /opt/simple-ftp-server/
 cp simple-ftp-server.service /etc/systemd/system/
 ```
 
@@ -110,8 +110,8 @@ cp simple-ftp-server.service /etc/systemd/system/
 编辑 `/etc/systemd/system/simple-ftp-server.service`，确保路径正确：
 ```ini
 [Service]
-WorkingDirectory=/opt/ftp-server
-ExecStart=/opt/ftp-server/ftp-server
+WorkingDirectory=/opt/simple-ftp-server
+ExecStart=/opt/simple-ftp-server/simple-ftp-server
 ```
 
 ### 3. 启动服务
