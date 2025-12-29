@@ -1,6 +1,11 @@
 # Simple FTP Server
 
-基于 Go 语言和 `github.com/fclairamb/ftpserverlib` 库实现的简易 FTP 服务器。支持 JSON 配置、用户认证及家目录隔离。
+基于 Go 语言和 [ftpserverlib](https://github.com/fclairamb/ftpserverlib) 库实现的简易 FTP 服务器。本项目旨在演示如何使用该库快速构建一个支持 JSON 配置、用户认证及家目录隔离的定制化 FTP 服务。
+
+## 核心依赖
+
+本项目核心功能由 **[github.com/fclairamb/ftpserverlib](https://github.com/fclairamb/ftpserverlib)** 提供。
+该库是一个功能强大且灵活的 Go 语言 FTP 服务器库，支持自定义驱动（Driver）来处理认证和文件系统操作。
 
 ## 功能特性
 
