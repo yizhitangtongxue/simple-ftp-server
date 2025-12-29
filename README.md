@@ -89,3 +89,42 @@ CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o ftp-server-mac-intel main.go
 ```bash
 CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -o ftp-server-mac-m1 main.go
 ```
+
+## Systemd 自动开机启动 (Linux)
+
+本项目提供了 `ftp-server.service` 模板文件，用于配置 Systemd 服务。
+
+### 1. 部署文件
+假设你将程序部署在 `/opt/ftp-server` 目录：
+```bash
+# 创建目录
+mkdir -p /opt/ftp-server/
+
+# 复制文件
+cp ftp-server-linux /opt/ftp-server/ftp-server
+cp config.json /opt/ftp-server/
+cp ftp-server.service /etc/systemd/system/
+```
+
+### 2. 修改配置
+编辑 `/etc/systemd/system/ftp-server.service`，确保路径正确：
+```ini
+[Service]
+WorkingDirectory=/opt/ftp-server
+ExecStart=/opt/ftp-server/ftp-server
+```
+
+### 3. 启动服务
+```bash
+# 重载配置
+systemctl daemon-reload
+
+# 启动服务
+systemctl start ftp-server
+
+#在此设置开机自启
+systemctl enable ftp-server
+
+# 查看状态
+systemctl status ftp-server
+```
