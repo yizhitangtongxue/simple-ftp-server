@@ -70,13 +70,13 @@ mkdir -p /tmp/ftp/admin
 ### 编译 Linux 版本 (amd64)
 适用于常见的 Linux 服务器 (CentOS, Ubuntu 等)。
 ```bash
-CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o simple-ftp-server-linux main.go
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o simple-ftp-server-linux-amd64 main.go
 ```
 
 ### 编译 Windows 版本 (amd64)
 生成 `.exe` 文件。
 ```bash
-CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o simple-ftp-server-windows.exe main.go
+CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o simple-ftp-server-windows-amd64.exe main.go
 ```
 
 ### 编译 macOS 版本 (amd64 / Intel)
