@@ -2,6 +2,10 @@
 
 基于 Go 语言和 [ftpserverlib](https://github.com/fclairamb/ftpserverlib) 库实现的简易 FTP 服务器。本项目旨在演示如何使用该库快速构建一个支持 JSON 配置、用户认证及家目录隔离的定制化 FTP 服务。
 
+## 已知问题
+
+*   **Systemd 启动失败**: 当前版本在使用 `systemctl` 启动服务时会启动失败。建议目前优先使用直接运行二进制文件的方式启动。
+
 ## 核心依赖
 
 本项目核心功能由 **[github.com/fclairamb/ftpserverlib](https://github.com/fclairamb/ftpserverlib)** 提供。
@@ -128,3 +132,5 @@ systemctl enable ftp-server
 # 查看状态
 systemctl status ftp-server
 ```
+
+
