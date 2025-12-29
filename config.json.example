@@ -1,0 +1,20 @@
+{
+  "server": {
+    "listen_addr": ":2121",
+    "public_ip": "127.0.0.1",
+    "passive_port_low": 30000,
+    "passive_port_high": 30010
+  },
+  "users": [
+    {
+      "username": "admin",
+      "password": "password123",
+      "home_dir": "/tmp/ftp/admin"
+    },
+    {
+      "username": "user",
+      "password": "user123",
+      "home_dir": "/tmp/ftp/user"
+    }
+  ]
+}
