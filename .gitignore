@@ -35,3 +35,4 @@ build/
 ### Project
 config.json
 simple-ftp-server-*
+*.zip
