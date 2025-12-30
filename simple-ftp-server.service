@@ -8,8 +8,8 @@ User=root
 Group=root
 
 # 修改为实际的可执行文件路径和工作目录
-WorkingDirectory=/opt/simple-ftp-server
-ExecStart=/opt/simple-ftp-server/simple-ftp-server
+WorkingDirectory=/data/simple-ftp-server
+ExecStart=/data/simple-ftp-server/simple-ftp-server -config /data/simple-ftp-server/config.json
 
 # 自动重启配置
 Restart=always

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"os"
 	"os/signal"
@@ -13,8 +14,12 @@ import (
 )
 
 func main() {
+	// 0. 解析参数
+	configPath := flag.String("config", "config.json", "配置文件路径")
+	flag.Parse()
+
 	// 1. 加载配置
-	cfg, err := config.LoadConfig("config.json")
+	cfg, err := config.LoadConfig(*configPath)
 	if err != nil {
 		log.Fatalf("无法加载配置文件: %v", err)
 	}

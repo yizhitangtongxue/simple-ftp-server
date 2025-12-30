@@ -2,9 +2,7 @@
 
 基于 Go 语言和 [ftpserverlib](https://github.com/fclairamb/ftpserverlib) 库实现的简易 FTP 服务器。本项目旨在演示如何使用该库快速构建一个支持 JSON 配置、用户认证及家目录隔离的定制化 FTP 服务。
 
-## 已知问题
 
-*   **Systemd 启动失败**: 当前版本在使用 `systemctl` 启动服务时会启动失败。建议目前优先使用直接运行二进制文件的方式启动。
 
 ## 核心依赖
 
@@ -63,8 +61,11 @@ go build -o ftp-server main.go
 # 确保家目录存在
 mkdir -p /tmp/ftp/admin
 
-# 启动服务器
+# 启动服务器 (默认加载同级目录下 config.json)
 ./simple-ftp-server
+
+# 指定配置文件路径
+./simple-ftp-server -config /path/to/config.json
 ```
 
 ## 跨平台编译方法
@@ -115,7 +116,7 @@ cp simple-ftp-server.service /etc/systemd/system/
 ```ini
 [Service]
 WorkingDirectory=/opt/simple-ftp-server
-ExecStart=/opt/simple-ftp-server/simple-ftp-server
+ExecStart=/opt/simple-ftp-server/simple-ftp-server -config /opt/simple-ftp-server/config.json
 ```
 
 ### 3. 启动服务
