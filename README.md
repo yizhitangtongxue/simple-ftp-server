@@ -106,7 +106,7 @@ CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -o simple-ftp-server-mac-m1 main
 mkdir -p /data/simple-ftp-server/
 
 # 复制文件
-cp simple-ftp-server-linux /data/simple-ftp-server/simple-ftp-server
+cp simple-ftp-server-linux-amd64 /data/simple-ftp-server/simple-ftp-server
 cp config.json /data/simple-ftp-server/
 cp simple-ftp-server.service /etc/systemd/system/
 ```
