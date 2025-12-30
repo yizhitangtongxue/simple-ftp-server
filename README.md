@@ -23,7 +23,7 @@
 ### 1. 编译
 ```bash
 go mod tidy
-go build -o ftp-server main.go
+go build -o simple-ftp-server main.go
 ```
 
 ### 2. 配置
