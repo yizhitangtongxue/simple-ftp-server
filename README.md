@@ -41,7 +41,7 @@ go build -o ftp-server main.go
     {
       "username": "admin",
       "password": "password123",
-      "home_dir": "/tmp/ftp/admin"
+      "home_dir": "/data/simple-ftp-server/storage/admin"
     }
   ]
 }
@@ -59,13 +59,13 @@ go build -o ftp-server main.go
 ### 3. 运行
 ```bash
 # 确保家目录存在
-mkdir -p /tmp/ftp/admin
+mkdir -p /data/simple-ftp-server/storage/admin
 
 # 启动服务器 (默认加载同级目录下 config.json)
 ./simple-ftp-server
 
 # 指定配置文件路径
-./simple-ftp-server -config /path/to/config.json
+./simple-ftp-server -config /data/simple-ftp-server/config.json
 ```
 
 ## 跨平台编译方法
@@ -100,14 +100,14 @@ CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -o simple-ftp-server-mac-m1 main
 本项目提供了 `simple-ftp-server.service` 模板文件，用于配置 Systemd 服务。
 
 ### 1. 部署文件
-假设你将程序部署在 `/opt/simple-ftp-server` 目录：
+假设你将程序部署在 `/data/simple-ftp-server` 目录：
 ```bash
 # 创建目录
-mkdir -p /opt/simple-ftp-server/
+mkdir -p /data/simple-ftp-server/
 
 # 复制文件
-cp ftp-server-linux /opt/simple-ftp-server/simple-ftp-server
-cp config.json /opt/simple-ftp-server/
+cp simple-ftp-server-linux /data/simple-ftp-server/simple-ftp-server
+cp config.json /data/simple-ftp-server/
 cp simple-ftp-server.service /etc/systemd/system/
 ```
 
@@ -115,8 +115,8 @@ cp simple-ftp-server.service /etc/systemd/system/
 编辑 `/etc/systemd/system/simple-ftp-server.service`，确保路径正确：
 ```ini
 [Service]
-WorkingDirectory=/opt/simple-ftp-server
-ExecStart=/opt/simple-ftp-server/simple-ftp-server -config /opt/simple-ftp-server/config.json
+WorkingDirectory=/data/simple-ftp-server
+ExecStart=/data/simple-ftp-server/simple-ftp-server -config /data/simple-ftp-server/config.json
 ```
 
 ### 3. 启动服务
@@ -125,13 +125,13 @@ ExecStart=/opt/simple-ftp-server/simple-ftp-server -config /opt/simple-ftp-serve
 systemctl daemon-reload
 
 # 启动服务
-systemctl start ftp-server
+systemctl start simple-ftp-server
 
 #在此设置开机自启
-systemctl enable ftp-server
+systemctl enable simple-ftp-server
 
 # 查看状态
-systemctl status ftp-server
+systemctl status simple-ftp-server
 ```
 
 
